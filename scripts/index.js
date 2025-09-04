@@ -34,9 +34,15 @@ const displayLevelWord = (words) => {
     <div
         class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4"
       >
-        <h2 class="font-bold">${word.word}</h2>
+        <h2 class="font-bold">${
+          word.word ? word.word : "meaning not found"
+        }</h2>
         <p class="font-semibold">Meaning/Pronunciaton</p>
-        <div class="font-medium text-2xl hind-siliguri pb-4">"${word.meaning} / ${word.pronunciation}"</div>
+        <div class="font-medium text-2xl hind-siliguri pb-4">"${
+          word.meaning ? word.meaning : "meaning not found"
+        } / ${
+      word.pronunciation ? word.pronunciation : "pronunciation not found"
+    }"</div>
         <div class="flex justify-between items-center">
           <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF70]">
             <i class="fa-solid fa-circle-info"></i>
