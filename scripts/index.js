@@ -16,6 +16,12 @@ const loadLevelWord = (id) => {
       displayLevelWord(data.data);
     });
 };
+
+const createSynonyms = (arr) => {
+  const elements = arr.map((el) => `<span class="btn">${el}</span>`);
+  return elements.join(" ");
+};
+
 const loadWordDetail = async (id) => {
   const url = `https://openapi.programming-hero.com/api/word/${id}`;
   const res = await fetch(url);
@@ -28,7 +34,9 @@ const displayWordDetails = (word) => {
   detailBox.innerHTML = `
   <div>
       <h2 class="text-2xl font-bold">
-          ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})
+          ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${
+    word.pronunciation
+  })
       </h2>
   </div>
   <div>
@@ -41,9 +49,7 @@ const displayWordDetails = (word) => {
   </div>
   <div>
     <h2 class="font-bold">Synonyms</h2>
-    <span class="btn">Syn1</span>
-    <span class="btn">Syn2</span>
-    <span class="btn">Syn3</span>
+    <div class="">${createSynonyms(word.synonyms)}</div>
   </div>
   `;
   document.getElementById("word_modal").showModal();
